@@ -162,6 +162,16 @@ public class Array<E> {//E为一个数据类型，使用时可以重新定义
         }
         return data[index];
     }
+    //获取最后一个位置的元素
+    public E getLast()
+    {
+        return get(size - 1);
+    }
+    //获取第一个位置的元素
+    public E getFirst()
+    {
+        return get(0);
+    }
     /**
      * @param index
      * 从数组中删除index位置的元素，返回删除的元素
