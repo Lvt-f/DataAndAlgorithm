@@ -28,7 +28,7 @@ public class LookQueue<E> implements Queue<E> {
     public int getSize() {
         return size;
     }
-
+    //队列是否为空
     @Override
     public boolean isEmpty() {
         return front == tail;

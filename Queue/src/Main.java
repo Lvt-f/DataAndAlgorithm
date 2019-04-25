@@ -1,28 +1,35 @@
+import java.util.Random;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        //泛型不支持基本数据类型
-        Array<Integer> array = new Array<>();
-        for(int i = 0 ; i < 10 ;i ++){
-            array.addLast(i);
+        int opCount = 100000000;
+
+        ArrayQueue<Integer>arrayQueue = new ArrayQueue<>();
+        double time1 = testQueue(arrayQueue,opCount);
+        System.out.println("ArrayQueue time:" + time1);
+
+        LookQueue<Integer>LookQueue = new LookQueue<>();
+        double time2 = testQueue(LookQueue,opCount);
+        System.out.println("LookQueue time:" + time2);
+    }
+    //测试使用q运行opCount个enqueue和dequeue操作的时间，单位：秒
+    private static double testQueue(Queue<Integer> q,int opCount)
+    {
+        Random random = new Random();
+        long startTime = System.nanoTime();
+        //...入队
+        for (int i = 0; i < opCount; i++) {
+            q.enqueue(random.nextInt(Integer.MAX_VALUE));//随机数入队
         }
-        System.out.println(array);
+        //出队
+        for (int i = 0; i < opCount; i++) {
+            q.dequeue();
+        }
 
-        array.add(1,100);
-        System.out.println(array);
-
-        array.addFirst(-1);
-        System.out.println(array);
-
-        array.remove(2);
-        System.out.println(array);
-
-        array.removeElement(4);
-        System.out.println(array);
-
-        array.removeFirst();
-        System.out.println(array);
+        long endTime = System.nanoTime();
+        return (endTime - startTime) / 1000000000.0;
     }
 }
 
