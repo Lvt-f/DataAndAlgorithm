@@ -8,11 +8,16 @@ public class Main {
 
         ArrayQueue<Integer>arrayQueue = new ArrayQueue<>();
         double time1 = testQueue(arrayQueue,opCount);
-        System.out.println("ArrayQueue time:" + time1);
+        System.out.println("ArrayQueue time:" + time1 + "s");
 
         LookQueue<Integer>LookQueue = new LookQueue<>();
         double time2 = testQueue(LookQueue,opCount);
-        System.out.println("LookQueue time:" + time2);
+        System.out.println("LookQueue time:" + time2 + "s");
+
+        LinkedListQueue<Integer>linkedListQueue = new LinkedListQueue<>();
+        double time3 = testQueue(linkedListQueue,opCount);
+        System.out.println("LinkedListQueue time:" + time3 + "s");
+
     }
     //测试使用q运行opCount个enqueue和dequeue操作的时间，单位：秒
     private static double testQueue(Queue<Integer> q,int opCount)
