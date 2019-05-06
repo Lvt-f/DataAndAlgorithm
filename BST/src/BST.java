@@ -72,7 +72,7 @@ public class BST<E extends Comparable<E>> {
     /**
      * @param e
      * @param node
-     * 看以node为根的二分二分搜索树中是否包含元素e，递归算法
+     * 看以node为根的二分搜索树中是否包含元素e，递归算法
      * */
     private boolean contains(Node node,E e){
         //递归的终止条件
@@ -88,7 +88,97 @@ public class BST<E extends Comparable<E>> {
             return contains(node.right,e);
         }
     }
+    /**
+     * 二叉树的前序遍历
+     * */
+    public void preOrder(){
+        preOrder(root);
+    }
+    /**
+     * @param node
+     * 前序遍历以node为根的二分搜索树，递归算法
+     * */
+    private void preOrder(Node node){
+        //递归终止条件
+        if (node == null) {
+            return;
+        }
+        //递归的逻辑代码
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+//        //不遵守递归终止条件的时候
+//        if(node != null){
+//            System.out.println(node.e);
+//            preOrder(node.left);
+//            preOrder(node.right);
+//        }
+    }
+    @Override
+    public String toString(){
+        StringBuilder res = new StringBuilder();
+        generateBSTString(root,0,res);
+        return res.toString();
+    }
+    /**
+     * @param node
+     * @param depth 深度
+     * @param res 字符串
+     * 生成以node为根节点，深度为depth的描述二叉树的字符串
+     * */
+    private void generateBSTString(Node node,int depth,StringBuilder res){
+        if (node == null) {
+            res.append(generateDepthString(depth)+"null\n");
+            return;
+        }
+        res.append(generateDepthString(depth) + node.e + "\n");
+        generateBSTString(node.left,depth+1,res);
+        generateBSTString(node.right,depth+1,res);
+    }
+    //二分搜索树的中序遍历
+    public void inorder(){
+        inorder(root);
+    }
+    /**
+     * @param node
+     * 中序遍历以node为根的二分搜索树，递归算法
+     * */
+    private void inorder(Node node){
+        if(node == null){
+            return;
+        }
+        inorder(node.left);
+        System.out.println(node.e);
+        inorder(node.right);
+    }
+    //二分搜索树，后续遍历
+    public void postOrder(){
+       postOrder(root);
+    }
+    /**
+     * @param node
+     * 后序遍历以node为根的二分搜索树，递归算法
+     * 后序遍历的一个应用：二叉搜索树内存释放
+     * */
+    private void postOrder(Node node){
+        if (node == null) {
+            return;
+        }
+        //先处理左子树
+        postOrder(node.left);
+        //在处理右子树
+        postOrder(node.right);
+        //打印根节点
+        System.out.println(node.e);
+    }
 
+    private String generateDepthString(int depth){
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            res.append("--");
+        }
+        return res.toString();
+    }
 
 
 
