@@ -1,3 +1,7 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * 二分搜索数，泛型需要可比较性
  * 现阶段所使用的二分搜索数不包含重复元素
