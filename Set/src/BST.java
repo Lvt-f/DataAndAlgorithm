@@ -31,7 +31,7 @@ public class BST<E extends Comparable<E>> {
      * 返回二分搜索数当前存储的元素
      */
     public int size(){
-        return size();
+        return size;
     }
     /**
      * 查看当前二分搜索数是否为空

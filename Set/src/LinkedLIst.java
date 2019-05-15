@@ -140,6 +140,15 @@ class LinkedList<E> {
         size--;
         return retNode.e;
     }
+    //从链表中删除第一个元素，返回删除的元素
+    public E removeFirst(){
+        return remove(0);
+    }
+    //从链表中删除最后一个元素，返回删除的元素
+    public E removeLast() {
+        return remove(size-1);
+    }
+
     // 从链表中删除元素e
     public void removeElement(E e){
 
@@ -156,14 +165,6 @@ class LinkedList<E> {
             delNode.next = null;
             size --;
         }
-    }
-    //从链表中删除第一个元素，返回删除的元素
-    public E removeFirst(){
-        return remove(0);
-    }
-    //从链表中删除最后一个元素，返回删除的元素
-    public E removeLast() {
-        return remove(size-1);
     }
     @Override
     public String toString() {
