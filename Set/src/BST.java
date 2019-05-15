@@ -1,3 +1,7 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * 二分搜索数，泛型需要可比较性
  * 现阶段所使用的二分搜索数不包含重复元素
@@ -232,20 +236,30 @@ public class BST<E extends Comparable<E>> {
         }
         return maxmum(root).e;
     }
-    //返回以node为根的二分搜索树的最大值所在的节点
+    /**
+     * @param node
+     * 返回以node为根的二分搜索树的最大值所在的节点
+     * */
     private Node maxmum(Node node){
         if (node.right == null)
             return node;
         return maxmum(node.right);
     }
-    //从二分搜索数中删除最小值所在的节点，返回最小值
+    /**
+     *
+     * 从二分搜索数中删除最小值所在的节点，返回最小值
+     */
+
     public E removeMin(){
         E ret = minmum();
         root = removeMin(root);
         return ret;
     }
-    //删除以node为根的二分搜索数中的最小节点
-    //返回删除以后新的二分搜索树的根
+    /**
+     * @param node
+     * 删除以node为根的二分搜索数中的最小节点
+     * 返回删除以后新的二分搜索树的根
+     * */
     private Node removeMin(Node node){
         if (node.left == null) {
             Node rightNode = node.right;
@@ -256,15 +270,21 @@ public class BST<E extends Comparable<E>> {
         node.left =removeMin(node.left);
         return node;
     }
+    /**
+     * 从二分搜索数中删除最大值所在的节点，返回最大值
+     * */
 
-    //从二分搜索数中删除最大值所在的节点，返回最大值
     public E removeMax(){
         E ret = maxmum();
         root = removeMax(root);
         return ret;
     }
-    //删除以node为根的二分搜索数中的最大节点
-    //返回删除以后新的二分搜索树的根
+    /**
+     * @param node
+     * 删除以node为根的二分搜索数中的最大节点
+     * 返回删除以后新的二分搜索树的根
+     * */
+
     private Node removeMax(Node node){
         if (node.right == null) {
             Node leftNode = node.left;
@@ -275,12 +295,20 @@ public class BST<E extends Comparable<E>> {
         node.right =removeMax(node.right);
         return node;
     }
-    //从二分搜索树中删除元素为e的节点
+    /**
+     * @param e
+     * 从二分搜索树中删除元素为e的节点
+     */
+
     public void remove(E e){
         root = remove(root,e);
     }
-    //删除以node为根的二分搜索树中值为e的节点，递归算法
-    //返回删除节点后新的二分搜索树的根
+    /**
+     * @param node
+     * @param e
+     * 删除以node为根的二分搜索树中值为e的节点，递归算法
+     * 返回删除节点后新的二分搜索树的根
+     * */
     private Node remove(Node node,E e){
         if (node == null) {
             return null;
